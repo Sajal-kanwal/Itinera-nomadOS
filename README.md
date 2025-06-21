@@ -1,87 +1,107 @@
-# Welcome to React Router!
+# 🌍 Itinera-nomadOS
 
-A modern, production-ready template for building full-stack React applications using React Router.
+**AI-powered travel agency platform** with a sleek public-facing site and a powerful admin dashboard. Easily generate personalized trip itineraries, manage bookings, track user growth, and visualize analytics — all in one unified web application.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+---
 
-## Features
+## ✨ Features
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+- 🤖 **AI Trip Itinerary Generator**  
+  Generate smart, personalized trip plans based on country, budget, interests, group size, and travel style.
 
-## Getting Started
+- 🧳 **Trip Booking System**  
+  Seamless public booking interface with full trip previews.
 
-### Installation
+- 📊 **Admin Dashboard**  
+  Manage users and trips with advanced analytics and growth metrics.
 
-Install the dependencies:
+- 📈 **Interactive Charts**  
+  Visualize key metrics using dynamic charts and stats tables.
 
+- 🔐 **Secure Auth & Data Management**  
+  Appwrite-backed user authentication and real-time database integration.
+
+- ⚡ **Responsive UI & Smooth UX**  
+  Mobile-first design with modern components, transitions, and state management.
+
+---
+
+## 🛠️ Tech Stack
+
+| Frontend            | Backend / Services   | UI & Libraries         |
+|---------------------|----------------------|-------------------------|
+| React 19            | Appwrite             | Syncfusion Components  |
+| React Router v7     | —                    | Tailwind CSS           |
+| Vite                |                      |                         |
+
+---
+
+## 📁 Folder Structure (Simplified)
+
+```text
+Itinera-nomadOS/
+├── public/                  # Static assets (favicon, index.html, etc.)
+├── src/
+│   ├── components/          # Reusable UI components (Header, Button, etc.)
+│   ├── pages/               # Public and admin-facing pages
+│   ├── services/            # Appwrite and other API integrations
+│   ├── utils/               # Utility functions and helpers
+│   ├── hooks/               # Custom React hooks
+│   └── App.jsx              # Root component
+├── .gitignore
+├── package.json
+├── vite.config.js
+└── README.md
+```
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/your-username/Itinera-nomadOS.git
+cd Itinera-nomadOS
+```
+
+### 2. Install Dependencies
 ```bash
 npm install
 ```
 
-### Development
+### 3. Set Up Environment
+Create a .env file based on .env.example:
 
-Start the development server with HMR:
+```env
+VITE_APPWRITE_ENDPOINT=https://cloud.appwrite.io/v1
+VITE_APPWRITE_PROJECT_ID=your_project_id
+VITE_APPWRITE_DB_ID=your_db_id
+VITE_APPWRITE_COLLECTION_ID=your_collection_id
+```
 
+### 4. Start the Dev Server
 ```bash
 npm run dev
 ```
 
-Your application will be available at `http://localhost:5173`.
+## 📊 Screenshots
+Coming soon...
+Admin dashboard, itinerary generator, and trip overview UI.
 
-## Building for Production
+## 📌 Roadmap
+ Itinerary generation via AI prompt templates
 
-Create a production build:
+ Basic booking interface
 
-```bash
-npm run build
-```
+ Admin dashboard + charts
 
-## Deployment
+ Stripe/UPI integration
 
-### Docker Deployment
+ Realtime chat with travel assistant
 
-To build and run using Docker:
+ Mobile app with PWA support
 
-```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
-```
-
-The containerized application can be deployed to any platform that supports Docker, including:
-
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
-
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
-
----
-
-Built with ❤️ using React Router.
+ ## 🤝 Contributing
+PRs are welcome! Please open an issue first for major changes.
+For local dev instructions, see CONTRIBUTING.md (optional).
