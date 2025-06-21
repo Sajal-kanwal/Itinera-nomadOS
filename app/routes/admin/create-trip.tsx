@@ -2,7 +2,7 @@ import {Header} from "../../../components";
 import {ComboBoxComponent} from "@syncfusion/ej2-react-dropdowns";
 import type { Route } from './+types/create-trip'
 import {comboBoxItems, selectItems} from "~/constants";
-import {cn, formatKey} from "~/lib/utils";
+import {cn, countryCodeToEmoji, formatKey} from "~/lib/utils";
 import {LayerDirective, LayersDirective, MapsComponent} from "@syncfusion/ej2-react-maps";
 import React, {useState} from "react";
 import {world_map} from "~/constants/world_map";
@@ -11,13 +11,14 @@ import {account} from "~/appwrite/client";
 import {useNavigate} from "react-router";
 
 export const loader = async () => {
-    const response = await fetch('https://restcountries.com/v3.1/all');
+    const response = await fetch('https://restcountries.com/v3.1/all?fields=name,latlng,cca2,maps');
     const data = await response.json();
 
     return data.map((country: any) => ({
-        name: country.flag + country.name.common,
+        name: `${countryCodeToEmoji(country.cca2)} ${country.name.common}`,
         coordinates: country.latlng,
-        value: country.name.common,
+        label: country.name.common,
+        code: country.cca2,
         openStreetMap: country.maps?.openStreetMap,
     }))
 }
@@ -96,14 +97,14 @@ const CreateTrip = ({ loaderData }: Route.ComponentProps ) => {
     }
     const countryData = countries.map((country) => ({
         text: country.name,
-        value: country.value,
+        value: country.code,
     }))
 
     const mapData = [
         {
-            country: formData.country,
+            country: countries.find((c) => c.code === formData.country)?.label || '',
             color: '#EA382E',
-            coordinates: countries.find((c: Country) => c.name === formData.country)?.coordinates || []
+            coordinates: countries.find((c) => c.code === formData.country)?.coordinates || []
         }
     ]
 
@@ -135,7 +136,7 @@ const CreateTrip = ({ loaderData }: Route.ComponentProps ) => {
                                 e.updateData(
                                     countries.filter((country) => country.name.toLowerCase().includes(query)).map(((country) => ({
                                         text: country.name,
-                                        value: country.value
+                                        value: country.code
                                     })))
                                 )
                             }}

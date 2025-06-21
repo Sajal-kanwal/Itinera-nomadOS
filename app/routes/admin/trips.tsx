@@ -1,5 +1,5 @@
 import {Header, TripCard} from "../../../components";
-import {type LoaderFunctionArgs, useSearchParams} from "react-router";
+import {type LoaderFunctionArgs, useNavigate, useSearchParams} from "react-router";
 import {getAllTrips, getTripById} from "~/appwrite/trips";
 import {parseTripData} from "~/lib/utils";
 import type {Route} from './+types/trips'
@@ -31,10 +31,11 @@ const Trips = ({ loaderData }: Route.ComponentProps) => {
     const initialPage = Number(searchParams.get('page') || '1')
 
     const [currentPage, setCurrentPage] = useState(initialPage);
+    const navigate = useNavigate()
 
     const handlePageChange = (page: number) => {
         setCurrentPage(page);
-        window.location.search = `?page=${page}`
+        navigate(`?page=${page}`);
     }
 
     return (

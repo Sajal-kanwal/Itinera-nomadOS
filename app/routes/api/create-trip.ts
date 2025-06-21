@@ -3,7 +3,7 @@ import {GoogleGenerativeAI} from "@google/generative-ai";
 import {parseMarkdownToJson, parseTripData} from "~/lib/utils";
 import {appwriteConfig, database} from "~/appwrite/client";
 import {ID} from "appwrite";
-import {createProduct} from "~/lib/stripe";
+
 
 export const action = async ({ request }: ActionFunctionArgs) => {
     const {
@@ -29,7 +29,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
         {
         "name": "A descriptive title for the trip",
         "description": "A brief description of the trip and its highlights not exceeding 100 words",
-        "estimatedPrice": "Lowest average price for the trip in USD, e.g.$price",
+        "estimatedPrice": "Lowest average price for the trip in Rupee, e.g.₹price",
         "duration": ${numberOfDays},
         "budget": "${budget}",
         "travelStyle": "${travelStyle}",
@@ -94,22 +94,8 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 
         const tripDetail = parseTripData(result.tripDetails) as Trip;
         const tripPrice = parseInt(tripDetail.estimatedPrice.replace('$', ''), 10)
-        const paymentLink = await createProduct(
-            tripDetail.name,
-            tripDetail.description,
-            imageUrls,
-            tripPrice,
-            result.$id
-        )
 
-        await database.updateDocument(
-            appwriteConfig.databaseId,
-            appwriteConfig.tripCollectionId,
-            result.$id,
-            {
-                payment_link: paymentLink.url
-            }
-        )
+
 
         return data({ id: result.$id })
     } catch (e) {

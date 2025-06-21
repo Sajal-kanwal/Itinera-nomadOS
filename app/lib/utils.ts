@@ -1,5 +1,5 @@
-import { clsx, type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
+import {type ClassValue, clsx} from "clsx";
+import {twMerge} from "tailwind-merge";
 import dayjs from "dayjs";
 
 export function cn(...inputs: ClassValue[]) {
@@ -9,6 +9,16 @@ export function cn(...inputs: ClassValue[]) {
 export const formatDate = (dateString: string): string => {
   return dayjs(dateString).format("MMMM DD, YYYY");
 };
+
+// Converts ISO 3166-1 alpha-2 country codes like "JP" into emoji flags like 🇯🇵
+export function countryCodeToEmoji(code: string): string {
+  return code
+      .toUpperCase()
+      .replace(/./g, char =>
+          String.fromCodePoint(127397 + char.charCodeAt(0))
+      );
+}
+
 
 export function parseMarkdownToJson(markdownText: string): unknown | null {
   const regex = /```json\n([\s\S]+?)\n```/;
@@ -28,9 +38,7 @@ export function parseMarkdownToJson(markdownText: string): unknown | null {
 
 export function parseTripData(jsonString: string): Trip | null {
   try {
-    const data: Trip = JSON.parse(jsonString);
-
-    return data;
+    return JSON.parse(jsonString);
   } catch (error) {
     console.error("Failed to parse trip data:", error);
     return null;
