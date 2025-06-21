@@ -38,19 +38,21 @@
 
 ## 📁 Folder Structure (Simplified)
 
+```text
 Itinera-nomadOS/
-│
-├── public/ # Static assets
+├── public/                  # Static assets (favicon, index.html, etc.)
 ├── src/
-│ ├── components/ # Reusable UI components
-│ ├── pages/ # Public + admin page views
-│ ├── services/ # API and Appwrite integration
-│ ├── utils/ # Helper functions
-│ ├── hooks/ # Custom React hooks
-│ └── App.jsx
+│   ├── components/          # Reusable UI components (Header, Button, etc.)
+│   ├── pages/               # Public and admin-facing pages
+│   ├── services/            # Appwrite and other API integrations
+│   ├── utils/               # Utility functions and helpers
+│   ├── hooks/               # Custom React hooks
+│   └── App.jsx              # Root component
 ├── .gitignore
 ├── package.json
-└── vite.config.js
+├── vite.config.js
+└── README.md
+```
 
 ---
 
