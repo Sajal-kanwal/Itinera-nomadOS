@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link, useLoaderData, useLocation, useNavigate, useParams} from "react-router";
-import {logoutUser} from "../../travel-agency-dashboard-main/app/appwrite/auth";
-import {cn} from "../../travel-agency-dashboard-main/app/lib/utils";
+import {logoutUser} from "~/appwrite/auth";
+import {cn} from "~/lib/utils";
 
 const RootNavbar = () => {
     const navigate = useNavigate();

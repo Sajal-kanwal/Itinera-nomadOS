@@ -1,5 +1,5 @@
 import {Link, useLocation} from "react-router";
-import {cn} from "../../travel-agency-dashboard-main/app/lib/utils";
+import {cn} from "~/lib/utils";
 import {IntlBase} from "@syncfusion/ej2-base";
 import getActualDateTimeFormat = IntlBase.getActualDateTimeFormat;
 import {ButtonComponent} from "@syncfusion/ej2-react-buttons";

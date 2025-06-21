@@ -1,4 +1,4 @@
-import {calculateTrendPercentage, cn} from "../../travel-agency-dashboard-main/app/lib/utils";
+import {calculateTrendPercentage, cn} from "~/lib/utils";
 
 const StatsCard = ({
     headerTitle,

@@ -1,4 +1,4 @@
-import { parseTripData } from "../../../travel-agency-dashboard-main/app/lib/utils";
+import { parseTripData } from "~/lib/utils";
 import { database, appwriteConfig } from "./client";
 
 interface Document {
